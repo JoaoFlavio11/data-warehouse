@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import Link from "next/link";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -21,22 +21,34 @@ export function Footer() {
           <nav>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="hover:text-blue-400 transition-colors duration-300">
+                <Link
+                  href="/about"
+                  className="hover:text-blue-400 transition-colors duration-300"
+                >
                   Sobre nós
                 </Link>
               </li>
               <li>
-                <Link href="/features" className="hover:text-blue-400 transition-colors duration-300">
+                <Link
+                  href="/features"
+                  className="hover:text-blue-400 transition-colors duration-300"
+                >
                   Recursos
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-blue-400 transition-colors duration-300">
+                <Link
+                  href="/contact"
+                  className="hover:text-blue-400 transition-colors duration-300"
+                >
                   Contato
                 </Link>
               </li>
               <li>
-                <Link href="/termos" className="hover:text-blue-400 transition-colors duration-300">
+                <Link
+                  href="/termos"
+                  className="hover:text-blue-400 transition-colors duration-300"
+                >
                   Termos de Serviço
                 </Link>
               </li>
@@ -48,26 +60,41 @@ export function Footer() {
         <div className="flex flex-col items-center md:items-end">
           <h3 className="font-semibold text-white mb-3">Conecte-se</h3>
           <div className="flex space-x-4 mb-4">
-            <a href="https://github.com/seu-perfil" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-2xl hover:text-blue-400 transition-colors duration-300">
+            <a
+              href="https://github.com/seu-perfil"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="text-2xl hover:text-blue-400 transition-colors duration-300"
+            >
               <FaGithub />
             </a>
-            <a href="https://linkedin.com/in/seu-perfil" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-2xl hover:text-blue-400 transition-colors duration-300">
+            <a
+              href="https://linkedin.com/in/seu-perfil"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-2xl hover:text-blue-400 transition-colors duration-300"
+            >
               <FaLinkedin />
             </a>
-            <a href="mailto:contato@easyroute.com" aria-label="Email" className="text-2xl hover:text-blue-400 transition-colors duration-300">
+            <a
+              href="mailto:contato@easyroute.com"
+              aria-label="Email"
+              className="text-2xl hover:text-blue-400 transition-colors duration-300"
+            >
               <FaEnvelope />
             </a>
           </div>
-          <p className="text-sm text-gray-400">
-            contato@easyroute.com
-          </p>
+          <p className="text-sm text-gray-400">contato@easyroute.com</p>
         </div>
       </div>
-      
+
       {/* Direitos Autorais na parte inferior */}
       <div className="mt-8 pt-4 border-t border-gray-700 text-center">
         <p className="text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} EasyRoute. Todos os direitos reservados.
+          &copy; {new Date().getFullYear()} EasyRoute. Todos os direitos
+          reservados.
         </p>
       </div>
     </footer>

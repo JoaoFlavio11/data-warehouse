@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.15",
@@ -48,6 +49,7 @@
     "eslint-config-next": "15.5.3",
     "eslint-plugin-storybook": "^9.1.6",
     "playwright": "^1.55.0",
+    "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.8",
     "typescript": "^5",

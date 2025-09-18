@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -8,10 +8,12 @@ export function Hero() {
           Otimize seu galpão com grafos. Sem complicação.
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto mb-8 opacity-90">
-          Diga adeus à logística manual e rotas ineficientes. Com EasyRoute, você visualiza, planeja e otimiza a movimentação de mercadorias de forma inteligente, usando o poder da teoria dos grafos.
+          Diga adeus à logística manual e rotas ineficientes. Com EasyRoute,
+          você visualiza, planeja e otimiza a movimentação de mercadorias de
+          forma inteligente, usando o poder da teoria dos grafos.
         </p>
-        <Link 
-          href="/signup" 
+        <Link
+          href="/signup"
           className="bg-white text-blue-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-300"
         >
           Comece a otimizar hoje mesmo!
