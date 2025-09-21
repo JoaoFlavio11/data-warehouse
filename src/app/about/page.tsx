@@ -21,8 +21,7 @@ export default function AboutUs() {
           </p>
 
           {/* Cards de Missão e Visão */}
-          <Cards/>
-          
+          <Cards />
         </div>
       </main>
     </div>

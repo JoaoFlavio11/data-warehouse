@@ -1,4 +1,4 @@
-import Form from "@/src/modules/contac/componets/Form";
+import Form from "@/src/modules/contact/componets/Form";
 
 export default function ContactUS() {
   return (
