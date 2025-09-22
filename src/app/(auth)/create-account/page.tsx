@@ -1,5 +1,10 @@
+import Form from "@/src/modules/auth/create-account/components/Form";
+
 export default function createAccount(){
   return(
-    <div>Create Account</div>
+    <>
+      {/* criar conta */}
+      <Form/>
+    </>
   );
 }

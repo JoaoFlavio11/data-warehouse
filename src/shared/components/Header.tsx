@@ -38,13 +38,22 @@ export function Header() {
             Contato
           </Link>
 
-          {/* Botão de Chamada para Ação */}
-          <Link
-            href="/create-account"
-            className="bg-blue-600 text-white py-2 px-4 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors duration-300"
-          >
-            Comece Agora
-          </Link>
+          {/* Botões de Ação */}
+          <div className="flex items-center space-x-3">
+            <Link
+              href="/create-account"
+              className="bg-blue-600 text-white py-2 px-5 rounded-full text-md font-semibold shadow-md hover:bg-[#f0f0f0] hover:text-blue-800   transition-all duration-300"
+            >
+             Comece Agora
+            </Link>
+
+            <Link
+              href="/login"
+              className=" border border-blue-600 text-blue-600 py-2 px-5 rounded-full text-md font-semibold hover:bg-blue-600 hover:text-white transition-colors duration-300"
+            >
+              Fazer Login
+            </Link>
+          </div>
         </div>
       </nav>
     </header>
