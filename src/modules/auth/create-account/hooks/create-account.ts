@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/src/firebase/firebase-config";
+import { auth } from "@/src/services/firebase-config";
 import { FirebaseError } from "firebase/app";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 
 type Feedback = { type: "error" | "success"; message: string } | null;
 
