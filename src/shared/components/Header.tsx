@@ -49,10 +49,10 @@ export function Header() {
             Sobre
           </Link>
           <Link
-            href="/contact"
+            href="/payments"
             className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
           >
-            Contato
+            Planos
           </Link>
 
           {/* Botões de Ação */}
