@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaSignInAlt, FaUserPlus, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
+import { FaUserPlus, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/src/services/firebase-config";
 import { useState } from "react";
@@ -89,14 +89,6 @@ export function Header() {
                 >
                   <FaUserPlus className="text-xl" />
                   <span>Criar conta</span>
-                </Link>
-
-                <Link
-                  href="/login"
-                  className="flex items-center space-x-2 border border-blue-600 text-blue-600 py-2 px-5 rounded-full text-md font-semibold hover:bg-blue-600 hover:text-white transition-colors duration-300"
-                >
-                  <FaSignInAlt className="text-md" />
-                  <span>Fazer Login</span>
                 </Link>
               </>
             )}
