@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Alert } from "@/src/shared/components/ui/alert";
+import { Alert, AlertDescription } from "@/src/shared/components/ui/alert";
 import { useLogin } from "@/src/modules/auth/login/hooks/login";
 
 export function Form() {
@@ -81,7 +81,7 @@ export function Form() {
               feedback.type === "error" ? "bg-red-500" : "bg-green-500"
             }`}
           >
-            {feedback.message}
+            <AlertDescription>{feedback.message}</AlertDescription>
           </Alert>
         )}
       </div>

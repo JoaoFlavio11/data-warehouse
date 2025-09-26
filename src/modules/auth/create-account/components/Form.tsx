@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Alert } from "@/src/shared/components/ui/alert";
+import { Alert, AlertDescription } from "@/src/shared/components/ui/alert";
 import { useRegister } from "@/src/modules/auth/create-account/hooks/create-account";
 
 export default function Form() {
@@ -101,7 +101,7 @@ export default function Form() {
               feedback.type === "error" ? "bg-red-500" : "bg-green-500"
             }`}
           >
-            {feedback.message}
+            <AlertDescription>{feedback.message}</AlertDescription>
           </Alert>
         )}
       </div>
