@@ -1,5 +1,5 @@
 import DashGrid from "@/src/modules/dashboard/components/DashGrid";
-import Sidebar from "@/src/shared/components/Sidebar";
+import Sidebar from "@/src/shared/components/Layout/Sidebar";
 
 // app/dashboard/page.tsx
 export default function DashboardPage() {

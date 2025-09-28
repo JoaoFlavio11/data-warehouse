@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import {
   FaHome,
   FaClipboardList,
-  FaRoute,
   FaTruck,
   FaWarehouse,
   FaChartBar,
