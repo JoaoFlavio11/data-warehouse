@@ -21,6 +21,7 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      "*.md"
     ],
   },
   ...storybook.configs["flat/recommended"],

@@ -8,7 +8,8 @@ import RealtimeMap from "./RealTimeMap";
 
 
 
-export default function DashGrid() {
+export default function 
+DashGrid() {
   return (
     <div className="flex-1 p-6 mt-4">
       <DashHeader/>
