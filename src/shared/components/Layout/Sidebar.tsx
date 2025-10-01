@@ -8,7 +8,6 @@ import {
   FaTruck,
   FaWarehouse,
   FaChartBar,
-  FaCog,
 } from 'react-icons/fa';
 
 export default function Sidebar() {
@@ -20,7 +19,6 @@ export default function Sidebar() {
     { name: 'Veículos e rotas', icon: <FaTruck className="w-5 h-5" />, path: '/veiculos-rotas' },
     { name: 'Galpões', icon: <FaWarehouse className="w-5 h-5" />, path: '/galpoes' },
     { name: 'Relatórios', icon: <FaChartBar className="w-5 h-5" />, path: '/relatorios' },
-    { name: 'Configurações', icon: <FaCog className="w-5 h-5" />, path: '/configuracoes' },
   ];
 
   return (
