@@ -1,36 +1,253 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📦 Sistema WMS - Data Warehouse Frontend
 
-## Getting Started
+> Frontend React integrado com API Django para Warehouse Management System
 
-First, run the development server:
+[![React](https://img.shields.io/badge/React-18.3.1-blue)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-38B2AC)](https://tailwindcss.com/)
+[![NextJs](https://img.shields.io/badge/NextJs-15.x-38B2AC)](https://nextjs.org/)
+
+## 🎯 Visão Geral
+
+Este é o **frontend React** do sistema WMS, integrado com o [backend Django + Neo4j](https://github.com/JoaoFlavio11/warehouse-api).
+
+### Principais Funcionalidades
+
+✅ Dashboard de Warehouses com estatísticas em tempo real  
+✅ Gerenciamento completo de produtos e estoque  
+✅ Visualizador de rotas ótimas de picking  
+✅ Histórico de movimentações de estoque  
+✅ Autenticação via Firebase  
+✅ API REST integrada com React Query  
+
+---
+
+## 🚀 Quick Start
+
+### Pré-requisitos
+
+- Node.js 18+ e npm
+- Backend rodando em http://localhost:8000 ([veja aqui](https://github.com/JoaoFlavio11/warehouse-api))
+- Projeto Firebase configurado
+
+### Instalação
 
 ```bash
+# Clone o repositório
+git clone https://github.com/JoaoFlavio11/data-warehouse.git
+cd data-warehouse
+
+# Instale as dependências
+npm install
+
+# Configure as variáveis de ambiente
+cp docs/.env.example .env.local
+# Edite .env.local com suas credenciais
+
+# Inicie o servidor de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse: http://localhost:5173
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🏗️ Arquitetura
 
-## Learn More
+```
+Frontend (React)
+├── Components
+│   ├── WarehouseDashboard
+│   ├── ProductsList
+│   ├── StockManager
+│   └── PickingRouteVisualizer
+│
+├── Services/API
+│   ├── warehouse.ts ──────────> Backend API
+│   ├── inventory.ts ──────────> /api/inventory/*
+│   └── routing.ts ────────────> /api/routing/*
+│
+├── Hooks (React Query)
+│   ├── useWarehouse
+│   ├── useInventory
+│   └── useRouting
+│
+└── Types (TypeScript)
+    ├── warehouse.ts
+    ├── inventory.ts
+    └── routing.ts
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Estrutura do Projeto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── components/          # Componentes React
+│   ├── warehouse/      # Componentes de warehouse
+│   ├── inventory/      # Componentes de inventário
+│   ├── routing/        # Componentes de roteamento
+│   └── ui/            # Componentes UI (shadcn)
+│
+├── services/
+│   └── api/           # Clients da API
+│       ├── client.ts       # Axios configurado
+│       ├── warehouse.ts    # Warehouse endpoints
+│       ├── inventory.ts    # Inventory endpoints
+│       └── routing.ts      # Routing endpoints
+│
+├── hooks/             # Custom hooks
+│   ├── useWarehouse.ts
+│   ├── useInventory.ts
+│   └── useRouting.ts
+│
+├── types/             # TypeScript types
+│   ├── warehouse.ts
+│   ├── inventory.ts
+│   └── routing.ts
+│
+├── pages/             # Páginas
+│   ├── Index.tsx
+│   └── NotFound.tsx
+│
+└── lib/               # Utilitários
+    └── utils.ts
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Stack Tecnológico
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Core
+- **React 18.3.1** - UI Library
+- **TypeScript** - Type Safety
+- **NextJS 15** - Build Tool & Dev Server
+
+### UI & Styling
+- **TailwindCSS** - Utility-first CSS
+- **shadcn/ui** - Componentes UI
+- **Lucide React** - Ícones
+
+### Data Fetching & State
+- **React Query (TanStack Query)** - Server state management
+- **Axios** - HTTP client
+
+### Forms & Validation
+- **React Hook Form** - Formulários performáticos
+- **Zod** - Schema validation
+
+### Auth
+- **Firebase SDK** - Autenticação
+
+---
+
+## 🔌 API
+
+### Configuração
+
+Todas as chamadas de API são gerenciadas através do Axios client configurado:
+
+```typescript
+// src/services/api/client.ts
+import axios from 'axios';
+
+const apiClient = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  timeout: 30000,
+});
+
+// Interceptor para adicionar token Firebase
+apiClient.interceptors.request.use(async (config) => {
+  const token = localStorage.getItem('firebaseToken');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+```
+
+### Exemplo de Uso
+
+```typescript
+// Usando hook customizado
+import { useWarehouses } from '@/hooks/useWarehouse';
+
+function Dashboard() {
+  const { data: warehouses, isLoading, error } = useWarehouses();
+  
+  if (isLoading) return <Skeleton />;
+  if (error) return <Error />;
+  
+  return (
+    <div>
+      {warehouses.map(warehouse => (
+        <WarehouseCard key={warehouse.uid} warehouse={warehouse} />
+      ))}
+    </div>
+  );
+}
+```
+
+---
+
+## 🔐 Autenticação
+
+O sistema usa **Firebase Authentication**. Configure as credenciais em `.env.local`:
+
+---
+
+## 🧪 Scripts Disponíveis
+
+```bash
+# Desenvolvimento
+npm run dev              # Inicia servidor de desenvolvimento
+
+# Build
+npm run build           # Build para produção
+npm run preview         # Preview do build
+
+# Qualidade de Código
+npm run lint            # Verifica problemas no código
+npm run type-check      # Verifica tipos TypeScript
+```
+
+---
+
+## 🔗 Repositórios Relacionados
+
+- **Backend API**: [warehouse-api](https://github.com/JoaoFlavio11/warehouse-api)
+- **Frontend**: [data-warehouse](https://github.com/JoaoFlavio11/data-warehouse) (este repo)
+
+---
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT.
+
+---
+
+## 👨‍💻 Autor
+
+**João Flávio**
+- GitHub: [@JoaoFlavio11](https://github.com/JoaoFlavio11)
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] ✅ Dashboard de warehouses
+- [ ] ✅ Gerenciamento de produtos
+- [ ] ✅ Controle de estoque
+- [ ] ✅ Rotas de picking
+- [ ] 🚧 Sistema de pedidos
+- [ ] 🚧 Analytics dashboard
+- [ ] 🚧 Mobile app (React Native)
+- [ ] ✅ Real-time updates
+- [ ] 🚧 Relatórios em PDF
+
+**Legenda**: ✅ Implementado | 🚧 Em desenvolvimento | 📅 Planejado
+
+---
+
+**Última atualização**: Outubro 2025
