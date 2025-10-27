@@ -1,6 +1,6 @@
 //@/src/modules/auth/login/hooks/login.ts
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { auth } from "@/src/services/firebase-config";
+import { auth } from "@/src/services/firebase/firebase-config";
 import { FirebaseError } from "firebase/app";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -9,9 +9,10 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 export const useLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [feedback, setFeedback] = useState<
-    { type: "error" | "success"; message: string } | null
-  >(null);
+  const [feedback, setFeedback] = useState<{
+    type: "error" | "success";
+    message: string;
+  } | null>(null);
   const router = useRouter();
 
   const [signInWithEmailAndPassword, user, loading] =

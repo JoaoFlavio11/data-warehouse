@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { auth } from "@/src/services/firebase/firebase-config";
 import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/src/services/firebase-config";
-import React from 'react';
 
 // Componente simples de loading
 const LoadingComponent = () => (
@@ -23,7 +22,7 @@ const useAuthRedirect = () => {
     if (!loading) {
       if (!user) {
         // sem usuário, volta para a página de login
-        router.push('/login');
+        router.push("/login");
       } else {
         // retorna a validação verdadeira
         setIsAuthChecked(true);

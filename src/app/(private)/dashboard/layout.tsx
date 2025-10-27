@@ -1,10 +1,10 @@
 // app/dashboard/layout.tsx
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { auth } from "@/src/services/firebase/firebase-config";
 import { useRouter } from "next/navigation";
+import { ReactNode, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/src/services/firebase-config";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [user, loading] = useAuthState(auth);

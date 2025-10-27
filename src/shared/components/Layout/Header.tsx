@@ -1,10 +1,10 @@
 "use client";
 
+import { auth } from "@/src/services/firebase/firebase-config";
 import Link from "next/link";
-import { FaSignOutAlt, FaUserCircle, FaSignInAlt } from "react-icons/fa";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/src/services/firebase-config";
 import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { FaSignInAlt, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 
 export function Header() {
   const [user] = useAuthState(auth);

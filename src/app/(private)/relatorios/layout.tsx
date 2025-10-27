@@ -1,21 +1,24 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { auth } from "@/src/services/firebase/firebase-config";
 import { useRouter } from "next/navigation";
+import { ReactNode, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/src/services/firebase-config";
 
-export default function RelatoriosLayout({ children }: { children: ReactNode }) {
+export default function RelatoriosLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
   const [checked, setChecked] = useState(false);
 
-  useEffect(() =>{
-    if(!loading){
-      if(!user){
+  useEffect(() => {
+    if (!loading) {
+      if (!user) {
         router.replace("/login");
-      }
-      else{
+      } else {
         setChecked(true);
       }
     }
